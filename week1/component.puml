@@ -1,0 +1,46 @@
+
+@startuml 组件图
+
+    component 卡账户 as account
+    component 监控模块 as monitor 
+    component 卡管理模块 as accountManage
+    component 收银台 as pay
+    component 打印模块 as printer
+
+    interface 查余额 as queryBalance
+    interface 加余额 as addBalance
+    interface 减余额 as subBalance
+    interface 创建账户 as createAccount
+    interface 注册 as regist
+    interface 充值 as recharge
+    interface 消费 as charge
+    interface 查询账户信息 as queryAccount
+    interface 打印 as print
+    interface 查询交易列表 as queryOrder
+
+    [account] - queryBalance
+    [account] - addBalance
+    [account] - subBalance
+    [account] - createAccount
+
+    [accountManage] - regist
+    [accountManage] - recharge
+    [accountManage] - queryAccount
+    [accountManage] - queryOrder
+    [accountManage] - charge
+
+    [accountManage] -> queryBalance
+    [accountManage] -> addBalance
+    [accountManage] -> subBalance
+    [accountManage] -> createAccount
+
+    [pay] -> charge
+    [pay] -> queryAccount
+
+    [monitor] -> queryOrder
+    [monitor] -> queryAccount
+    [monitor] -> print
+    
+    [printer] - print
+
+@enduml

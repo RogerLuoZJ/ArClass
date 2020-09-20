@@ -1,0 +1,26 @@
+@startuml
+actor :消费者: as customer
+actor :管理员: as admin
+actor :服务员: as watier
+
+usecase (注册) as regist
+usecase (缴费) as recharge
+usecase (收费) as receive
+usecase (查询余额) as query
+usecase (监视消费记录) as monitor
+usecase (打印消费记录) as printmonitor
+
+customer --> regist
+customer --> recharge
+customer --> query
+(recharge) .> (query) : include
+
+watier --> receive
+(receive) .> (query) : include
+admin --> monitor
+(monitor) .> (printmonitor) : extend 
+
+
+
+
+@enduml
