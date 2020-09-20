@@ -1,4 +1,4 @@
-@startuml
+@startuml 组件图
 node 办公机房 {
     database mysql [
         卡信息
