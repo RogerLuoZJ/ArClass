@@ -1,0 +1,20 @@
+@startuml
+class Cache
+interface KeyValueCache
+interface Rebuildable
+
+Cache : Object get(Object key)
+Cache : void put(Object key, Object value)
+Cache : void delete(Object key)
+Cache : void reBuild(Config.conf)
+
+KeyValueCache : Object get(Object key)
+KeyValueCache : void put(Object key, Object value)
+KeyValueCache : void delete(Object key)
+
+Rebuildable : void reBuild(Config.conf)
+
+KeyValueCache <|-- Cache
+Rebuildable <|-- Cache
+
+@enduml
